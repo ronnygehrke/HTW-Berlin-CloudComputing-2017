@@ -10,8 +10,6 @@ http.createServer(function (request, response) {
    response.writeHead(200, {'Content-Type': 'text/plain'});
    
     var queryData = url.parse(request.url, true).query;
-    var firstname =  queryData.fn;
-    var lastname =  queryData.ln;
     var requestId = crypto.randomBytes(16).toString("hex");
 
    if(request.method=='GET') 
