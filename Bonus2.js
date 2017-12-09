@@ -12,12 +12,8 @@ http.createServer(function (request, response) {
     var queryData = url.parse(request.url, true).query;
     var requestId = crypto.randomBytes(16).toString("hex");
 
-   if(request.method=='GET') 
-   {
-	    response.end('This process is your pid: ' + process.pid'.\n\nRequest Id: '+requestId);
-   
-   }
-   
+	response.end('This process is your pid: ' + process.pid'.\n\nRequest Id: '+requestId);
+     
 }).listen(port);
 
 // Console will print the message
