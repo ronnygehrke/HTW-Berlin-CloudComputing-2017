@@ -10,30 +10,14 @@ http.createServer(function (request, response) {
    response.writeHead(200, {'Content-Type': 'text/plain'});
    
     var queryData = url.parse(request.url, true).query;
+    var firstname =  queryData.fn;
+    var lastname =  queryData.ln;
     var requestId = crypto.randomBytes(16).toString("hex");
 
-    var headers = request.headers;
-    var authorization = headers['authorization'];
-   
    if(request.method=='GET') 
    {
-        var body = [];
-        request.on('data', function(chunk) {
-            body.push(chunk);
-        }).on('end', function() {
-            body = Buffer.concat(body).toString();
-
-				if (process.pid) {
-					responseMessage += 'This process is your pid: ' + process.pid;
-				}
-				
-                responseMessage += '\n\nRequest Id: '+requestId;
-                response.end(responseMessage);
-            });       
-    }
-    else
-   {       
-        response.end('Wow, this was an awesome '+request.method+' request. But you were requestesd to make a POST request.!\n\nRequest Id: '+requestId); 
+	    response.end('This process is your pid: ' + process.pid'.\n\nRequest Id: '+requestId);
+   
    }
    
 }).listen(port);
